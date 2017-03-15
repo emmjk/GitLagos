@@ -39,15 +39,14 @@
             android:layout_below="@id/userName"
             android:background="@color/white"
             android:layout_marginBottom="8dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal"
             android:elevation="@dimen/activity_horizontal_margin">
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:padding="@dimen/container_padding"
                 android:id="@+id/followersContainer" >
                 <TextView
                     android:layout_width="match_parent"
@@ -56,7 +55,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:padding="8dp"
+                    android:padding="16dp"
                     android:gravity="center"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -71,8 +70,7 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="@dimen/container_padding">
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,7 +79,7 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:padding="8dp"
+                    android:padding="16dp"
                     android:gravity="center"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -96,8 +94,7 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="@dimen/container_padding">
+                android:layout_weight="1">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,7 +102,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:padding="8dp"
+                    android:padding="16dp"
                     android:gravity="center"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -127,8 +124,6 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/details"
             android:background="@color/white"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:elevation="@dimen/activity_horizontal_margin">
@@ -136,8 +131,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/container_padding"
+                android:paddingTop="@dimen/container_padding"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/githubUrl">
                 <ImageView
                     android:layout_width="40dp"
@@ -150,14 +149,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/container_padding"
-                    android:id="@+id/githubProfileLink"/>
+                    android:id="@+id/githubProfileLink"
+                    android:textSize="18sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/container_padding"
+                android:paddingTop="@dimen/container_padding"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/blogUrl">
                 <ImageView
                     android:layout_width="40dp"
@@ -170,14 +174,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/container_padding"
-                    android:id="@+id/blogLink"/>
+                    android:id="@+id/blogLink"
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/container_padding"
+                android:paddingTop="@dimen/container_padding"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/mailTo">
                 <ImageView
                     android:layout_width="40dp"

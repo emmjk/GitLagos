@@ -70,26 +70,21 @@ public class UserProfile extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
 
                         try {
-                            profileUrl.setText(response.getString("html_url"));
-                            followersNo.setText(response.getString("followers"+""));
-                            followingNo.setText(response.getString("following"+""));
-                            repositoryNo.setText(response.getString("public_repos"));
-                            if(response.getString("blog") == null)
+
+                            profileUrl.setText(User.getProfileUrl());
+                            followersNo.setText(User.getFollowersNo());
+                            followingNo.setText(User.getFollowingNo());
+                            repositoryNo.setText(User.getReposNo());
+
+                            if(response.getString("blog").equals("null"))
                             {
                                 blogUrl.setText("No registered blog");
                             }
-                            else
-                            {
-                                blogUrl.setText(response.getString("blog"));
-                            }
 
-                            if(response.getString("email") == null)
+
+                            if(response.getString("email").equals("null"))
                             {
                                 mailToUser.setText("No registred email");
-                            }
-                            else
-                            {
-                                mailToUser.setText(response.getString("email"));
                             }
 
 
@@ -97,7 +92,7 @@ public class UserProfile extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                        ;
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -109,8 +104,6 @@ public class UserProfile extends AppCompatActivity {
 
         requestQueue.add(jsonObjectRequest);
 
-
-
         LinearLayout githubProfile = (LinearLayout) findViewById(R.id.githubUrl);
         LinearLayout blog = (LinearLayout) findViewById(R.id.blogUrl);
         LinearLayout mailTo = (LinearLayout) findViewById(R.id.mailTo);
@@ -119,6 +112,7 @@ public class UserProfile extends AppCompatActivity {
         githubProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent1 = new Intent(Intent.ACTION_VIEW);
                 intent1.setData(Uri.parse(profileUrl.getText().toString()));
                 startActivity(intent1);
@@ -129,9 +123,15 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    Intent intent1 = new Intent(Intent.ACTION_VIEW);
-                    intent1.setData(Uri.parse(blogUrl.getText().toString()));
-                    startActivity(intent1);
+
+                    if(!(User.getBlogUrl().equals("null")))
+                    {
+                        Intent intent1 = new Intent(Intent.ACTION_VIEW);
+                        intent1.setData(Uri.parse(blogUrl.getText().toString()));
+                        startActivity(intent1);
+                    }
+
+
                 }
                 catch (ActivityNotFoundException e)
                 {
@@ -144,10 +144,16 @@ public class UserProfile extends AppCompatActivity {
         mailTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto", mailToUser.getText().toString(), null));
 
-                startActivity(emailIntent);
+
+                if(!(User.getEmail().equals("null")))
+                {
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto", mailToUser.getText().toString(), null));
+
+                    startActivity(emailIntent);
+                }
+
             }
         });
 

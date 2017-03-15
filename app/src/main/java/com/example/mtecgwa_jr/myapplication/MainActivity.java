@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
                             for(int i = 0 ; i < itemsArray.length() ; i++)
                             {
                                 final JSONObject object = itemsArray.getJSONObject(i);
-
-                                dataList.add(new DataClass(object.getString("login") , object.getString("avatar_url") , object.getInt("id") , 20));
+                                String name = (object.getString("login")).substring(0,1).toUpperCase() + (object.getString("login")).substring(1);
+                                dataList.add(new DataClass(name , object.getString("avatar_url") , object.getInt("id") , 20));
                             }
 
                         } catch (JSONException e) {
