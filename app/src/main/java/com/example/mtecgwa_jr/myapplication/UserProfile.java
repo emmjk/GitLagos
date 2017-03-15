@@ -71,20 +71,27 @@ public class UserProfile extends AppCompatActivity {
 
                         try {
 
-                            profileUrl.setText(User.getProfileUrl());
-                            followersNo.setText(User.getFollowersNo());
-                            followingNo.setText(User.getFollowingNo());
-                            repositoryNo.setText(User.getReposNo());
+                            profileUrl.setText(response.getString("html_url"));
+                            followersNo.setText(response.getString("followers"));
+                            followingNo.setText(response.getString("following"));
+                            repositoryNo.setText(response.getString("public_repos"));
 
                             if(response.getString("blog").equals("null"))
                             {
                                 blogUrl.setText("No registered blog");
                             }
-
+                            else
+                            {
+                                blogUrl.setText(response.getString("blog"));
+                            }
 
                             if(response.getString("email").equals("null"))
                             {
                                 mailToUser.setText("No registred email");
+                            }
+                            else
+                            {
+                                mailToUser.setText(response.getString("email"));
                             }
 
 
@@ -123,11 +130,11 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-
-                    if(!(User.getBlogUrl().equals("null")))
+                    String blog = blogUrl.getText().toString();
+                    if(!(blog.equals("No registered blog")))
                     {
                         Intent intent1 = new Intent(Intent.ACTION_VIEW);
-                        intent1.setData(Uri.parse(blogUrl.getText().toString()));
+                        intent1.setData(Uri.parse(blog));
                         startActivity(intent1);
                     }
 
@@ -145,11 +152,11 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                if(!(User.getEmail().equals("null")))
+                String userMail = mailToUser.getText().toString();
+                if(!(userMail.equals("No registred email")))
                 {
                     Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                            "mailto", mailToUser.getText().toString(), null));
+                            "mailto", userMail, null));
 
                     startActivity(emailIntent);
                 }
